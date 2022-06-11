@@ -121,7 +121,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	 * Adds class 'active' to section when near top of viewport on scroll
 	 * first it finds the sections <section> on the page and loops to
 	 * get the distance from the top
-	 * if the distance to the top is between 0-100px adds active-section
+	 * if the distance to the top is between -5 and 200px adds active-section
 	 * 
 	 */
 
