@@ -7,15 +7,22 @@
  * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
  *
 */
-
+*, ::after, ::before {
+    box-sizing: border-box;
+}
 
 /* ---- Base Rules ---- */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
     margin: 0;
     font-family: 'Merriweather', serif;
     color: #fff;
+	padding-top: 63px;
 }
 
 
@@ -64,6 +71,113 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+.navbar {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+}
+.navbar > .container, .navbar > .container-fluid, .navbar > .container-lg, .navbar > .container-md, .navbar > .container-sm, .navbar > .container-xl, .navbar > .container-xxl {
+	display: flex;
+	flex-wrap: inherit;
+	align-items: center;
+	justify-content: space-between;
+}
+.navbar-light .navbar-toggler {
+	color: rgba(0, 0, 0, .55);
+	border-color: rgba(0, 0, 0, .1);
+}
+.navbar-toggler {
+	padding: .25rem .75rem;
+	font-size: 1.25rem;
+	line-height: 1;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: .25rem;
+	transition: box-shadow .15s ease-in-out;
+}
+.navbar-toggler {
+	font-size: 1.25rem;
+	font-weight: 800;
+	padding: 0.75rem;
+	text-transform: uppercase;
+	border-color: transparent !important;
+}
+.navbar-collapse {
+	flex-basis: 100%;
+	flex-grow: 1;
+	align-items: center;
+}
+.collapse:not(.show) {
+	display: none;
+}
+.collapse {
+	transition: height .35s ease
+}
+.navbar-nav {
+	display: flex;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+.navbar-light .navbar-nav .nav-link {
+	color: rgba(0, 0, 0, .55);
+}
+.navbar-light .navbar-nav .nav-link.active-nav{
+	color: #2b495f;
+	font-weight: bolder;
+	font-size: 0.8rem;
+}
+.navbar-nav .nav-link {
+	padding-right: 0;
+	padding-left: 0;
+}
+.nav-link {
+	display: block;
+	padding: .5rem 1rem;
+	color: #0d6efd;
+	text-decoration: none;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+.active-nav{
+	border-bottom: 2px solid #2b495f;
+}
+@media (min-width: 992px) {
+	.navbar-expand-lg .navbar-toggler {
+		display: none;
+	}
+	.navbar-expand-lg .navbar-collapse {
+		display: flex !important;
+		flex-basis: auto;
+	}
+	.navbar-expand-lg .navbar-nav {
+		flex-direction: row;
+	}
+	.navbar-expand-lg .navbar-nav .nav-link {
+		padding-right: .5rem;
+		padding-left: .5rem;
+	}
+	.navbar-expand-lg {
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+	}
+}
+.navbar-toggler:focus {
+	text-decoration: none;
+	outline: 0;
+	box-shadow: none !important;
+}
+.navbar-nav > li.nav-item > a.nav-link {
+	font-size: 0.75rem;
+	font-weight: 800;
+	letter-spacing: 0.0625em;
+	text-transform: uppercase;
+}
+
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
@@ -107,13 +221,39 @@ section {
 .page__footer p{
     color: #fff;
 }
-
-
+/* scroll to top */
+.scroll-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: #000;
+    background: rgba(255, 255, 255, 0.5);
+	line-height: 50px;
+}
+.rounded {
+    border-radius: .25rem!important;
+}
+.scroll-to-top:focus, .scroll-to-top:hover {
+    color: white;
+}
+.scroll-to-top:hover {
+    background: #343a40;
+}
+.scroll-to-top svg {
+    margin-top: 15px;
+}
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
 .landing__container {
     padding: 1em;
     text-align: left;
+}
+svg {
+    vertical-align: middle !important;
 }
 
 @media only screen and (min-width: 35em){
@@ -192,18 +332,18 @@ section:nth-of-type(3n + 1) .landing__container::after {
 
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
-/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
+/* Note: active-section class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.active-section {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+section.active-section .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+section.active-section .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
